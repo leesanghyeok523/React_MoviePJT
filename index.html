@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>React with CDN</title>
+  <!-- React and ReactDOM -->
+  <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+  <!-- Babel for JSX support -->
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+  <div id="root"></div>
+</body>
+<script type="text/babel">
+  const DOM = ReactDOM.createRoot(document.getElementById("root"))
+  function App() {
+    const [minutes, setMinutes] = React.useState(0)
+    const onChange = (event) => {
+      setMinutes(event.target.value)
+    }
+    return (
+      <div>
+        <h1>Super Converter</h1>
+        <label htmlFor="minutes">Minutes</label>
+        <input 
+        value={minutes}
+        id="minutes" placeholder="Minutes" type="number"
+        onChange={onChange}/>
+        <h4>You want to convert {minutes}</h4>
+        <label htmlFor="hours">Hours</label>
+        <input id="hours" placeholder="Hours" type="number"/>
+      </div>
+    )
+  }
+  ReactDOM.render(<App />, root)
+</script>
+
+</html> 
